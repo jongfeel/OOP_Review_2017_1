@@ -9,5 +9,6 @@ namespace OOP_Review_2017_1
     class Test
     {
         public int Id { set; get; }
+        public string Name { set; get; }
     }
 }

@@ -12,7 +12,7 @@ namespace OOP_Review_2017_1
         {
             Test t1 = new Test();
             Test t2 = new Test();
-            
+
             // why?
             bool resultEquals = object.Equals(t1, t2);  // false
             bool resultReferenceEquals = object.ReferenceEquals(t1, t2); // false
@@ -26,9 +26,18 @@ namespace OOP_Review_2017_1
 
             resultEquals = object.Equals(t1.Id, t2.Id);  // true
             resultReferenceEquals = object.ReferenceEquals(t1.Id, t2.Id); // false, why???
-            
+
             Console.WriteLine(writeformat, "object.Equals(t1.Id, t2.Id)", resultEquals);
             Console.WriteLine(writeformat, "object.ReferenceEquals(t1.Id, t2.Id)", resultReferenceEquals);
+
+            t1.Name = "Test";
+            t2.Name = "Test";
+
+            resultEquals = object.Equals(t1.Name, t2.Name);  // true
+            resultReferenceEquals = object.ReferenceEquals(t1.Name, t2.Name); // true, why???
+
+            Console.WriteLine(writeformat, "object.Equals(t1.Name, t2.Name)", resultEquals);
+            Console.WriteLine(writeformat, "object.ReferenceEquals(t1.Name, t2.Name)", resultReferenceEquals);
 
             // Diffenrent "value" and "object"
             // Let's check out!
