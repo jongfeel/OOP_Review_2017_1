@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OOP_Review_2017_1
 {
-    class Test
+    class Test// : Object
     {
         public int Id { set; get; }
         public string Name { set; get; }

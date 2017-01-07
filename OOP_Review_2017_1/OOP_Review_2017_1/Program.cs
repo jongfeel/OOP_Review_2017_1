@@ -10,6 +10,12 @@ namespace OOP_Review_2017_1
     {
         static void Main(string[] args)
         {
+            /*
+             * Understanding class and object
+             * Different value and object
+            Review System.Object
+            Review Equals method
+            */
             Test t1 = new Test();
             Test t2 = new Test();
 
@@ -41,6 +47,48 @@ namespace OOP_Review_2017_1
 
             // Diffenrent "value" and "object"
             // Let's check out!
+
+            // value - struct - stack
+            // object - class - heap
+            // string type - class
+
+            #region Equals
+            Test2 test2_1 = new Test2() { Id = 1 };
+            Type t = test2_1.GetType();   // Name: "Test2", Namesapce: "OOP_Review_2017_1"
+            Test2 test2_2 = new Test2() { Id = 1 };
+            Test2 test2_3 = test2_1;
+
+            bool result = test2_1.Equals(test2_2);  // true, why? override Equals method.
+            bool result2 = test2_1.Equals(test2_3);  // true
+
+            test2_2.Id = 2;
+            bool result3 = test2_1.Equals(test2_2);
+
+            // 비교는 이렇게 하는게 더 쉽지 않나요?
+            // 반박: 그런데 이건 int 비교니까 하나 마나인듯...
+            if (test2_1.Id == test2_2.Id)
+            {
+
+            }
+            // Test2 type의 object가 같은가?
+            // 이걸 왜 비교하죠? class type도 built-in type과 동일하게 인지하고 싶으니까
+            if (test2_1 == test2_2)
+            {
+
+            }
+            else
+            {
+
+            }
+
+            #endregion
+
+            #region 원하는 주제
+            // 0. Delegate
+            // 1. Lambda
+            Action action = () => { };
+            // 2. Closure
+            #endregion
         }
     }
 }
