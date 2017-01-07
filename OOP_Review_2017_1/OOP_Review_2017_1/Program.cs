@@ -88,6 +88,7 @@ namespace OOP_Review_2017_1
             // 1. Lambda
             Action action = () => { };
             // 2. Closure
+            // 3. yield???
             #endregion
         }
     }
