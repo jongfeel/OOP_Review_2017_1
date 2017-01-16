@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26014.0
+VisualStudioVersion = 15.0.26020.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OOP_Review_2017_1", "OOP_Review_2017_1\OOP_Review_2017_1.csproj", "{C9791F53-46DF-4084-A942-F210991DACB4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OOP_Review_2017_2", "OOP_Review_2017_2\OOP_Review_2017_2.csproj", "{DAC10132-9260-4EBE-81E8-88591A8A408D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OOP_Review_2017_3", "OOP_Review_2017_3\OOP_Review_2017_3.csproj", "{82410320-B80C-40C7-B9CE-AA8958134973}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{DAC10132-9260-4EBE-81E8-88591A8A408D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DAC10132-9260-4EBE-81E8-88591A8A408D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DAC10132-9260-4EBE-81E8-88591A8A408D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82410320-B80C-40C7-B9CE-AA8958134973}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82410320-B80C-40C7-B9CE-AA8958134973}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82410320-B80C-40C7-B9CE-AA8958134973}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82410320-B80C-40C7-B9CE-AA8958134973}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
