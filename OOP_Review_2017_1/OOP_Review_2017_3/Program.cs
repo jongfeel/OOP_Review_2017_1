@@ -102,6 +102,9 @@ namespace OOP_Review_2017_3
             // 1. LINQ - Ashley R님이 원하는 주제를 선정해 주세요.
             // 2. Reflection - 두 번 정도 나눠서 준비 - vnenise
             // 3. Attribute - 준비 - vnenise
+
+            // 저도 요청 드리는건
+            // 여러분들이 짠 소스코드의 리뷰
         }
     }
 }
