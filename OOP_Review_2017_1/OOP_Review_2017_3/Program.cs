@@ -3,13 +3,19 @@ using OOP_Review_2017_3.StrategyPattern;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reactive.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace OOP_Review_2017_3
 {
     class Program
     {
+        static void ForEachMethod(Action action)
+        {
+            action();
+        }
         static void Main(string[] args)
         {
             // Closure
@@ -21,18 +27,45 @@ namespace OOP_Review_2017_3
             
             #region closure1
             int x = 10;
-            Action action = () => Console.WriteLine("X=" + x);
+            Action action = () =>
+            {
+                Console.WriteLine("X=" + x);
+            };
             x = 20;
             action();   // x value is... 20, why?
             #endregion
 
-            #region closue2
+            #region closure2
             List<Action> list = new List<Action>();
+
+            int value = 0;
             for (int i = 0; i < 5; i++)
             {
-                list.Add(() => Console.WriteLine(i));
+                value = i;    
+                list.Add(() => Console.WriteLine(value));
             }
-            list.ForEach(forEachAction => forEachAction()); // value 5 write five times. why?
+            list.ForEach(forEachAction => forEachAction()); // value 4 write five times. why?
+            //list.ForEach(ForEachMethod);
+            #endregion
+
+            #region closure3
+            /*
+             * var add = (function () {
+                var counter = 0;
+                return function () {return counter += 1;}
+            })();
+             */
+
+            Func<Action> add = () =>
+            {
+                int counter = 0;
+                return () => counter += 1;
+            };
+            //add()();
+
+            //Action add1 = add();
+            //add1();
+
             #endregion
 
             #region Design pattern: abstract factory and factory method
@@ -49,6 +82,26 @@ namespace OOP_Review_2017_3
             warrior.Armor = new Plate();
             Console.WriteLine("Armor point: " + warrior.Armor.ArmorPoint);
             #endregion
+
+            #region Question1 - reactive programming
+            // http://rxwiki.wikidot.com/101samples
+            Console.WriteLine("Shows use of Start to start on a background thread:");
+            var o = Observable.Start(() =>
+            {
+                //This starts on a background thread.
+                Console.WriteLine("From background thread. Does not block main thread.");
+                Console.WriteLine("Calculating...");
+                Thread.Sleep(3000);
+                Console.WriteLine("Background work completed.");
+            }).Finally(() => Console.WriteLine("Main thread completed."));
+            Console.WriteLine("\r\n\t In Main Thread...\r\n");
+            o.Wait();   // Wait for completion of background operation.
+            #endregion
+
+            // 요청 주제
+            // 1. LINQ - Ashley R님이 원하는 주제를 선정해 주세요.
+            // 2. Reflection - 두 번 정도 나눠서 준비 - vnenise
+            // 3. Attribute - 준비 - vnenise
         }
     }
 }
