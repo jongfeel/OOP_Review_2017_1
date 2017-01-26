@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OOP_Review_2017_2", "OOP_Re
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OOP_Review_2017_3", "OOP_Review_2017_3\OOP_Review_2017_3.csproj", "{82410320-B80C-40C7-B9CE-AA8958134973}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OOP_Review_2017_4", "OOP_Review_2017_4\OOP_Review_2017_4.csproj", "{D967216D-008C-46C4-85B5-E53E41569C3C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{82410320-B80C-40C7-B9CE-AA8958134973}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{82410320-B80C-40C7-B9CE-AA8958134973}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{82410320-B80C-40C7-B9CE-AA8958134973}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D967216D-008C-46C4-85B5-E53E41569C3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D967216D-008C-46C4-85B5-E53E41569C3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D967216D-008C-46C4-85B5-E53E41569C3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D967216D-008C-46C4-85B5-E53E41569C3C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

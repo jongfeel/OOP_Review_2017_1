@@ -23,7 +23,7 @@ namespace OOP_Review_2017_3
             // 여러 program language에서 사용되는 개념
             // functional programming (함수형 프로그래밍)을 지원하는 언어는 반드시 이 개념이 들어 있다.
             // Closure란?
-            // 실행 시간이 다른 function/method를 통해 "상태 값이 보존"되고 그 값을 활용할 수 있게 만드는 기법.
+            // 실행 시간이 다른 function/method를 통해 "어떤 타입의 변수 상태 값이 보존"되고 그 값을 활용할 수 있게 만드는 기법.
             
             #region closure1
             int x = 10;
@@ -76,8 +76,10 @@ namespace OOP_Review_2017_3
             #endregion
 
             #region Design pattern: strategy
-            Character warrior = new Character("Garrosh Hellscream");
-            warrior.Armor = new Leather();
+            Character warrior = new Character("Garrosh Hellscream")
+            {
+                Armor = new Leather()
+            };
             Console.WriteLine("Armor point: " + warrior.Armor.ArmorPoint);
             warrior.Armor = new Plate();
             Console.WriteLine("Armor point: " + warrior.Armor.ArmorPoint);
