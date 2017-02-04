@@ -9,6 +9,7 @@ namespace OOP_Review_2017_4
 {
     class LuckyMan
     {
+        public int Count { private set; get; }
         public uint Age { get; set; }
         public string Name { get; set; }
 

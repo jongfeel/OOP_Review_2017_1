@@ -7,12 +7,19 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace OOP_Review_2017_4
 {
+    [AttributeUsage(AttributeTargets.All, AllowMultiple = true)]
     class MyDefaultValueAttribute : Attribute
     {
         public int Value { get; set; }
+
+        public MyDefaultValueAttribute()
+        {
+
+        }
 
         public MyDefaultValueAttribute(int value)
         {
@@ -20,6 +27,20 @@ namespace OOP_Review_2017_4
         }
     }
 
+    class Test
+    {
+        public T CreateInstance<T>() where T : new()
+        {
+            T instance1 = new T();
+            //T instance = Activator.CreateInstance<T>();
+            return instance1;
+        }
+
+        [MyDefaultValue(10)]
+        public int Count { get; set; }
+    }
+
+    
     class Program
     {
         static void Main(string[] args)
@@ -57,6 +78,7 @@ namespace OOP_Review_2017_4
                 Console.WriteLine("Property type: " + pi.PropertyType);
                 Console.WriteLine("Property can read: " + pi.CanRead);
                 Console.WriteLine("Property can write: " + pi.CanWrite);
+                Console.WriteLine("Property can write: " + pi.GetAccessors(true));
 
                 Console.WriteLine();
             });
@@ -120,7 +142,7 @@ namespace OOP_Review_2017_4
             Console.WriteLine();
             Console.WriteLine("Attribute phase");
 
-            // #define DEBUG라고 정의해준 것과 동일
+            // #if DEBUG라고 정의해준 것과 동일
             CallDebugMode("debugging!");
 
             // DllImport
@@ -128,7 +150,8 @@ namespace OOP_Review_2017_4
             // options
             // IconInformation = 0x000040
             // YesNo              = 0x000004
-            //MessageBox(IntPtr.Zero, "message box called", "Info", 0x000040 | 0x000004);
+            // OkCancel          = 0x000001
+            //MessageBox(IntPtr.Zero, "message box called", "Info", 0x000040 | 0x000001);
 
             // Visual studio에 특별히 warning setting을 건들지 않았다면 경고로 표시해줌.
             //Delete(0);
@@ -139,10 +162,25 @@ namespace OOP_Review_2017_4
 
             // 그럼 동작 원리는???
             // 눈치 빠른 분은 아셨겠지만 reflection을 통해 동작하게 만드는 거죠.
+            #endregion
+
+            // 퀄리티 있는 질문에 대한 답변
+            // 질문: T i = new T(); 이거 되나요?
+            Test test = new Test();
+            MyDefaultValueAttribute instance = test.CreateInstance<MyDefaultValueAttribute>();
+            // 답변: 됩니다!!! yeah!
 
             // custom attribute 만들어서 reflection을 통해 알아보기
-            
-            #endregion
+            Type testType = test.GetType();
+            PropertyInfo testPI = testType.GetProperty("Count");
+            MyDefaultValueAttribute myAttribute = testPI.GetCustomAttribute<MyDefaultValueAttribute>();
+            testPI.SetValue(test, myAttribute.Value);
+
+            // 요청 사항
+            // 1. LINQ 자체를 모른다 - basic concept - Ashley R
+            // 2. c# 7.0 review - SiYoon Song
+            // 3. self 요청 - 동적 method or proeprty 추가 - developerfeel
+            // 4. self code reivew 진행 - 누군가 짜 놓은 winform 용 계산기 프로그램 -> refactoring
         }
 
         [Conditional("DEBUG")]
@@ -154,7 +192,8 @@ namespace OOP_Review_2017_4
         [DllImport("user32.dll")]
         public static extern int MessageBox(IntPtr hWnd, String text, String caption, int options);
 
-        [Obsolete("This method is deprecated.")]
+        [Obsolete("This method is deprecated. 그러니까 쓰지 말라고!!!")]
+        // 이거 없앨꺼니까 쓰면 안됨
         public static void Delete(int value)
         {
             // Unity에서 많이 봤던 그 attribute
