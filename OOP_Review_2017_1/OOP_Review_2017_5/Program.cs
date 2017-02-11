@@ -7,6 +7,18 @@ using System.Threading.Tasks;
 
 namespace OOP_Review_2017_5
 {
+    class Letter
+    {
+        public string Alpha { get; set; }
+        public string Beta { get; set; }
+        public string Omega { get; set; }
+
+        public Letter()
+        {
+            Alpha = "Alpha";
+        }
+    }
+
     class Program
     {
         static void Main(string[] args)
@@ -125,7 +137,8 @@ namespace OOP_Review_2017_5
             #region Tuple
             // NuGet package "System.ValueTuple"
 
-            var letters = ("a", "b ");
+            dynamic lettersDynamic = "dynamic value";
+            var letters = ("a", "b", "c");
             Console.WriteLine("letters tuple item1: " + letters.Item1);
             Console.WriteLine("letters tuple item2: " + letters.Item2);
 
@@ -135,16 +148,104 @@ namespace OOP_Review_2017_5
             Console.WriteLine("alphabetStart tuple Alpha: " + alphabetStart.Alpha);
             Console.WriteLine("alphabetStart tuple Beta: " + alphabetStart.Beta);
 
-            (string First, string Second) firstLetters = (Alpha: "a", Beta: "b");   // warning
+            (string First, string Second) firstLetters = ("a", "b");   // warning
             Console.WriteLine("firstLetters tuple item1: " + firstLetters.Item1);
             Console.WriteLine("firstLetters tuple item2: " + firstLetters.Item2);
             Console.WriteLine("firstLetters tuple Alpha: " + firstLetters.First);
             Console.WriteLine("firstLetters tuple Beta: " + firstLetters.Second);
+
+            GetLettersTuple(out (string letter, int value, double value2) outThreeTuple);
+            Console.WriteLine("outThreeTuple letter " + outThreeTuple.letter);
+            Console.WriteLine("outThreeTuple value " + outThreeTuple.value);
+            Console.WriteLine("outThreeTuple value2 " + outThreeTuple.value2);
             #endregion
 
             // 나머지는 실시간 코딩으로...
             // 그게 재밌으니까요.
+            #region is keyword
+
+            Letter letter = GetLetters();
+            if (letter is Letter letter2)
+            {
+                // letter의 값을 letter2로 복사
+            }
+            else
+            {
+                // Letter type이 아니면...
+            }
+
+            // DiceSum2 test
+            int sum = DiceSum2(new object[] { 1, 2, 3 });
             #endregion
+
+            #region ref return
+
+            
+            Letter letter3 = new Letter();
+
+            int value = 0;
+            GetRefValue(ref value);
+            Console.WriteLine(value);   // 10
+
+            // ref return
+            int [] array = new int[10];
+            array[0] = 20;
+            ref int returnValue = ref GetRefValue2(array);
+            returnValue = 30;   // array[0] is 30
+
+            #endregion
+            #endregion
+
+            // 요청사항, 우선순위 변동
+            // 1. c# 7.0 review 2 - SiYoon Song
+            // 2. Code reivew (Unity3d) - SiYoon Song 
+            // 3. self code reivew 진행 - 누군가 짜 놓은 winform 용 계산기 프로그램 -> refactoring
+            // 4. LINQ 자체를 모른다 - basic concept - Ashley R
+            // 5. self 요청 - 동적 method or proeprty 추가 - developerfeel
+        }
+
+        // Tuple이 없던 시절
+        public static Letter GetLetters()
+        {
+            return new Letter() { Alpha = "a", Beta = "b", Omega = "o" };
+        }
+        
+        // Tuple을 쓸 수 있는 시대는?
+        public (string, int, double) GetLettersTuple()
+        {
+            return ("a", 1, 10.05);
+        }
+
+        public static bool GetLettersTuple(out (string, int, double) threeTuple)
+        {
+            threeTuple.Item1 = "a";
+            threeTuple.Item2 = 1;
+            threeTuple.Item3 = 10.05;
+
+            return true;
+        }
+
+        public static int DiceSum2(IEnumerable<object> values)
+        {
+            var sum = 0;
+            foreach (var item in values)
+            {
+                if (item is int val)
+                    sum += val;
+                else if (item is IEnumerable<object> subList)
+                    sum += DiceSum2(subList);
+            }
+            return sum;
+        }
+
+        public static void GetRefValue(ref int value)
+        {
+            value = 10;
+        }
+
+        public static ref int GetRefValue2(int [] array)
+        {
+            return ref array[0];
         }
     }
 }
