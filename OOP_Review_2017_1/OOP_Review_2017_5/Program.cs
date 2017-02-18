@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -66,11 +67,11 @@ namespace OOP_Review_2017_5
             #region LINQ example 1 - basic
             // 거창한건 아니고 위 링크에 있는 예제입니다.
             // Specify the data source.
-            scores = new int[] { 97, 92, 81, 60 };
+            IEnumerable<int> scores1 = new int[] { 97, 92, 81, 60 };
 
             // Define the query expression.
             IEnumerable<int> scoreQuery =
-                from score in scores
+                from score in scores1
                 where score > 80
                 select score;
 
@@ -83,9 +84,13 @@ namespace OOP_Review_2017_5
             // 요걸 SQL로 짜보면 어떨까요?
             // SELECT score FROM scores WHERE score > 80
 
+            // 중간 질문: Hashtable도 linq되나요?
+            // Hashtable도 IEnumerable 인터페이스를 구현하나요? 랑 같은 질문
+            // Hashtable, 정의를 보시면 구현이 되어 있습니다.
+
             // 다른점은???
             // DB는 Table base인데 실제 linq 문의 select에 해당하는 부분은 column name인데 해당하는 부분이 존재하지 않음
-            // -> SQL을 알고 있는 사람에게는 혼돈의 카오스
+            // -> SQL만 알고 있는 사람에게는 혼돈의 카오스
 
             // 그래서 from - in 문법으로 column name에 해당하는 걸 변수명으로 대체, 그리고 그걸 마치 SQL 문에서 Table의 column name 처럼 사용
             // 이 부분만 조금 다르고 나머지 문법은 대동소이함
@@ -104,9 +109,42 @@ namespace OOP_Review_2017_5
 
             // 이것은 extension method로 example1의 linq를 Where method 호출로 바꾼겁니다. 결과는 똑같죠.
             IEnumerable<int> scoreQueryCallByWhereMethod = scores.Where(score => score > 80);
-
             // Execute the query.
             foreach (int i in scoreQueryCallByWhereMethod)
+            {
+                Console.Write(i + " ");
+            }
+            Console.WriteLine();
+
+            // query를 한다는 거에서 대부분 하는 짓은 아래 세가지 입니다.
+            // Filter(search): 특정 글자가 들어있는, 특정 값을 만족하는 아이템만 가져와보자
+            // Sort: ascending, decending
+            // Grouping: 동일 조건의 아이템들에 대한 group
+            // 하나 더 추가해 보면
+            // Counting: 몇 개를 가져올거냐...
+
+            // 80보다 큰 값을 가져와서 내림차순으로 정렬해서 원하는 갯수만큼 가져오자
+            // 1. linq basic 방법으로...
+            var query1 =
+                (from score in scores
+                where score > 80
+                orderby score descending
+                select score).Take(3);
+
+            Console.WriteLine("orderby linq basic!");
+            // Execute the query.
+            foreach (int i in query1)
+            {
+                Console.Write(i + " ");
+            }
+            Console.WriteLine();
+
+            // 2. method call 방법으로...
+            var query2 = scores.Where(score => score > 80).OrderByDescending(score => score).Take(2);
+
+            Console.WriteLine("orderby method call!");
+            // Execute the query.
+            foreach (int i in query2)
             {
                 Console.Write(i + " ");
             }
@@ -196,11 +234,18 @@ namespace OOP_Review_2017_5
             #endregion
             #endregion
 
-            // 요청사항, 우선순위 변동
+            // 요청사항, 우선순위 변동 - 2.11
             // 1. c# 7.0 review 2 - SiYoon Song
             // 2. Code reivew (Unity3d) - SiYoon Song 
             // 3. self code reivew 진행 - 누군가 짜 놓은 winform 용 계산기 프로그램 -> refactoring
             // 4. LINQ 자체를 모른다 - basic concept - Ashley R
+            // 5. self 요청 - 동적 method or proeprty 추가 - developerfeel
+
+            // 요청사항, 우선순위 변동 - 2.18
+            // 1. async/await - DaeHee Kim
+            // 2. c# 7.0 review 2 - SiYoon Song
+            // 3. Code reivew (Unity3d) - SiYoon Song 
+            // 4. self code reivew 진행 - 누군가 짜 놓은 winform 용 계산기 프로그램 -> refactoring
             // 5. self 요청 - 동적 method or proeprty 추가 - developerfeel
         }
 

@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OOP_Review_2017_4", "OOP_Re
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject1", "UnitTestProject1\UnitTestProject1.csproj", "{87B7D680-E2AA-4123-AB08-601F9FB51BB9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OOP_Review_2017_5", "OOP_Review_2017_5\OOP_Review_2017_5.csproj", "{1DE4C5FD-C46B-4400-8C1B-72AC23658DF9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OOP_Review_2017_5_6", "OOP_Review_2017_5\OOP_Review_2017_5_6.csproj", "{1DE4C5FD-C46B-4400-8C1B-72AC23658DF9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
