@@ -25,6 +25,18 @@ namespace OOP_Review_2017_7
         {
             Console.WriteLine("SumLongTimeAsync method called");
 
+            //Task<ulong> sumTask = new Task<ulong>(() =>
+            //{
+            //    ulong sum = 0;
+            //    for (ulong i = 0; i < 900000000; i++)
+            //    {
+            //        sum += i;
+            //    }
+            //    return sum;
+            //});
+            //sumTask.Start();
+            //return await sumTask;
+
             return await Task.Factory.StartNew<ulong>(() =>
             {
                 ulong sum = 0;
@@ -41,8 +53,7 @@ namespace OOP_Review_2017_7
         public static void AsyncResult(IAsyncResult result)
         {
             Console.WriteLine("IAsyncResult callback: " + result.IsCompleted);
-
-            
+                        
             Func<ulong> func = result.AsyncState as Func<ulong>;
             // AsyncState를 가져와서 EndInvoke 호출
             ulong sum = func.EndInvoke(result);
@@ -56,7 +67,7 @@ namespace OOP_Review_2017_7
             Sum s = new Sum();
             // 뭔가 엄청난 연산을 하는 method 호출
             // 제 노트북 성능으로는 대략 4초 걸립니다.
-            //ulong sum = s.SumLongTime();  // 이 부분이 sync, SumLongTime method가 호출이 끝날 때 까지 기다려야 한다.
+            //ulong sum1 = s.SumLongTime();  // 이 부분이 synchronous, SumLongTime method가 호출이 끝날 때 까지 기다려야 한다.
             
             // async 하게 뭔가를 하려면
             // SumLongTime method의 delegate 생성
@@ -76,20 +87,36 @@ namespace OOP_Review_2017_7
             // 각 method 들의 호출 시점 체크해 보면 async에 대한 이해를 하실 수 있겠죠.
             // 제가 작년에도 언급 했지만 비동기 프로그래밍 != 네트워크 프로그래밍 입니다.
             // 그럴려면 동기/비동기에 대한 이해가 필요하죠. 이런 기법을 이용한 것 중에 하나가 네트워크 프로그래밍일 뿐입니다.
+
+            // 비동기라는 말을 어디서 들었다. => thread, callback
             #endregion
 
             #region C# async/await
             // 이 키워드를 써서 프로그래밍이 가능하려면 아래 기법에 대한 정확한 이해가 동반되어야 함
-            // 1. callback
-            // 2. thread
+            // 1. thread
+            // 2. callback
             // 3. sync/async
 
             // 같은 method를 async/await로 작성해 봄
+            Console.WriteLine("CallAsync method called!");
             Task<ulong> sumTask = CallAsync();
+
+            //  나는 내 할일을 한다.
             Console.WriteLine("asynchronous woking...");
+
             ulong sum = sumTask.Result;
+
             Console.WriteLine("Sum by async/await: " + sum);
             #endregion
+
+            // 요청사항, 우선순위 변동 - 2.25
+            // 1. 연습용 프로그램 리뷰 - Iccen Kim
+            // https://github.com/icydusk1/Memodic_170224
+            // 2. xamarin 라이브러리? 중요 문법: 잘 하는지 못하는지 정도, 응용 방법? - DaeHee Kim
+            // 3. c# 7.0 review 2 - SiYoon Song
+            // 4. Code reivew (Unity3d) - SiYoon Song 
+            // 5. self code reivew 진행 - 누군가 짜 놓은 winform 용 계산기 프로그램 -> refactoring
+            // 6. self 요청 - 동적 method or proeprty 추가 - developerfeel
         }
 
         public async static Task<ulong> CallAsync()
