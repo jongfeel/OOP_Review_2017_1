@@ -165,8 +165,8 @@ namespace OOP_Review_2017_10
             string juice5 = juice4();
 
             // 다음 시간
-            // 1. Iccen님의 opencv를 이용해서 어떤 특정 포인트 찾아내기 리뷰 (선 내용 공유)
-            // 2. Kyung Wong Gil님의 event vs delegate, // Synchronous, Asynchronous, thread and callback, APM(Asynchronous Programming Model)
+            // 1. Kyung Wong Gil님의 event vs delegate, // Synchronous, Asynchronous, thread and callback, APM(Asynchronous Programming Model)
+            // 2. Iccen님의 opencv를 이용해서 어떤 특정 포인트 찾아내기 리뷰 (선 내용 공유)
         }
 
         public static void ConsoleWrite(DelegateMethod dm)
