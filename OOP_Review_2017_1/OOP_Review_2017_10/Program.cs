@@ -161,6 +161,7 @@ namespace OOP_Review_2017_10
             // 3. return type으로 전달 가능
 
             ConsoleWrite(method);
+            ConsoleWrite(() => "blah blah");
             DelegateMethod juice4 = GetJuice();
             string juice5 = juice4();
 
