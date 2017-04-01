@@ -75,7 +75,7 @@ namespace OOP_Review_2017_10
             //array.GetEnumerator();
 
             // type?
-            int number = 0;
+            //int number = 0;
             IEnumerable intEnumerable = new int[10] { 3, 6, 2, 1021, 321, 4213, 21, 421, 2, 9 };
             
 
@@ -133,10 +133,11 @@ namespace OOP_Review_2017_10
 
             // 문제1. boxing, unboxing
             // 문제2. 너무 옛날 코드 -> 2001년
-            List<ISqueeze> list2 = new List<ISqueeze>();
-            list2.Add(s1);
-            list2.Add(a1);
-
+            List<ISqueeze> list2 = new List<ISqueeze>
+            {
+                s1,
+                a1
+            };
             list2.ForEach(s => Console.WriteLine(s.Squeeze()));
 
             // delegate
