@@ -16,48 +16,47 @@ Unity Hub - 개발자 커뮤니티: http://cafe.naver.com/unityhub
 윤성우의 프로그래밍 스터디 그룹[C언어,C++,JAVA(자바)]: http://cafe.naver.com/cstudyjava
 
 # Review list
-## 1. 2017-01-07
-Equals: value, object
+## 12. 2017-04-08 (Next)
+Code review: https://github.com/progsecu/Project-Kinect
+## 11. 2017-04-01
+event vs delegate
+## 10. 2017-03-25
+interface
 
-Equals and ReferenceEquals
+delegate
+## 9. 2017-03-18
+Code review: https://github.com/icydusk1/Memodic_170224
+## 8. 2017-03-04
+Code review: https://github.com/icydusk1/Memodic_170224
+## 7. 2017-02-25
+synchronous/asynchronous
 
-object.Equals method override
+async/await programming
+## 6. 2017-02-18
+C# 7.0 new features
+
+LINQ basic
+## 5. 2017-02-11
+LINQ basic
+
+C# 7.0 new features
+## 4. 2017-02-04
+Reflection
+
+Attribute
+## 3. 2017-01-21
+Closure
+
+Design Pattern: factory pattern, strategy pattern
 ## 2. 2017-01-14
 Review delegate
 
 Lambda
 
 yield
-## 3. 2017-01-21
-Closure
+## 1. 2017-01-07
+Equals: value, object
 
-Design Pattern: factory pattern, strategy pattern
-## 4. 2017-02-04
-Reflection
+Equals and ReferenceEquals
 
-Attribute
-## 5. 2017-02-11
-LINQ basic
-
-C# 7.0 new features
-## 6. 2017-02-18
-C# 7.0 new features
-
-LINQ basic
-
-## 7. 2017-02-25
-synchronous/asynchronous
-
-async/await programming
-## 8. 2017-03-04
-Code review: https://github.com/icydusk1/Memodic_170224
-## 9. 2017-03-18
-Code review: https://github.com/icydusk1/Memodic_170224
-## 10. 2017-03-25
-interface
-
-delegate
-## 11. 2017-04-01
-event vs delegate
-## 12. 2017-04-08 (Next)
-Code review: https://github.com/progsecu/Project-Kinect
+object.Equals method override
