@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -87,6 +88,19 @@ namespace OOP_Review_2017_14
             // method가 return value를 가진다 하더라도 1줄로 연산이 가능하다면 생략 가능
             // return keyword 마저 생략 가능
             Func<int, int, int> minus = (a, b) => a - b;
+
+            // 다음에 할 것
+            // 1. CoRoutine을 모른다.-> IEnumerable에 대한 이해
+            
+            // 어떤 문제가 있는가???
+            // IEnumerator, IEnumerable interface가 뭐 하는 놈인지를 모른다.
+            // interface에 대한 이해 부족
+            // CoRoutine이 정확하게 뭐 하는 놈인지를 모른다.
+        }
+
+        IEnumerator MyRoutine()
+        {
+            yield return null;
         }
 
         public static void Method1(int n)
