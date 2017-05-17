@@ -16,7 +16,7 @@ Unity Hub - 개발자 커뮤니티: http://cafe.naver.com/unityhub
 윤성우의 프로그래밍 스터디 그룹[C언어,C++,JAVA(자바)]: http://cafe.naver.com/cstudyjava
 
 # Review list
-## 16. 2017-05-14 (Next)
+## 16. 2017-05-14
 Thread in c# (Task)
 ## 15. 2017-04-29
 Unity coroutine
